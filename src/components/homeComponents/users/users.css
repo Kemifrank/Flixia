@@ -1,0 +1,52 @@
+.users-container {
+  padding: 110px 0;
+  background: #000c22;
+  text-align: center;
+}
+
+.counter-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.users-container h2 {
+  color: #002e5b;
+}
+
+.box-1 {
+  margin-top: 20px;
+  /* margin: auto; */
+  padding: 1rem;
+  border-left: 2px solid #fabb48;
+}
+
+.box-1 p {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* des */
+@media screen and (min-width: 1024px) {
+}
+/* tab */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+}
+/* mobile */
+@media screen and (max-width: 767px) {
+  .counter-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .box-1 {
+    margin-top: 20px;
+    width: 80%;
+    margin: auto;
+    padding: 1rem;
+    border-left: 0px;
+  }
+}

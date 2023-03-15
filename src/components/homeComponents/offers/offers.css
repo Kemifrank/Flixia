@@ -1,0 +1,239 @@
+.offers-container {
+  padding: 65px 0;
+  background: #1b1828;
+  /* border: 1px solid red; */
+}
+
+.offers-container h2 {
+  text-align: center;
+  color: #002e5b;
+}
+
+span {
+  color: #fabb48;
+}
+
+.offers-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  padding: 2rem;
+  /* margin-top: -20px; */
+}
+
+.basic {
+  width: 30%;
+  border: 1px solid rgb(190, 188, 188);
+  border-radius: 1rem;
+  transition: 0.5s;
+  padding: 10px 0px;
+}
+
+.basic:hover {
+  border: 2px solid transparent;
+  transform: scale(0.9);
+}
+
+.standard {
+  width: 30%;
+  border: 1px solid rgb(190, 188, 188);
+  border-radius: 1rem;
+  transition: 0.5s;
+  padding: 10px 0px;
+}
+.standard:hover {
+  border: 2px solid transparent;
+  transform: scale(0.9);
+}
+
+.premium {
+  width: 30%;
+  border: 1px solid rgb(190, 188, 188);
+  border-radius: 1rem;
+  transition: 0.5s;
+  padding: 10px 0px;
+}
+.premium:hover {
+  border: 2px solid transparent;
+  transform: scale(0.9);
+}
+
+h3 {
+  color: #fabb48;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 0.5rem;
+}
+
+.basic-content {
+  padding: 1rem;
+  line-height: 2rem;
+  font-size: 13px;
+}
+
+.standard-content {
+  padding: 1rem;
+  line-height: 2rem;
+  font-size: 13px;
+}
+.premium-content {
+  padding: 1rem;
+  line-height: 2rem;
+  font-size: 13px;
+}
+
+li {
+  text-align: center;
+  color: rgb(206, 185, 185);
+  font-weight: 500;
+  padding: 0.2rem;
+  font-size: 14px;
+}
+
+.offers-btn {
+  display: block;
+  width: 30%;
+  margin: 3px auto;
+  position: relative;
+  font-size: 13px;
+  outline: none;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #fabb48;
+}
+
+/* des */
+@media screen and (min-width: 1024px) {
+}
+/* tab */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .offers-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 2rem;
+    /* margin-top: -20px; */
+  }
+
+  .basic {
+    width: 95%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .standard {
+    width: 95%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .premium {
+    width: 95%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .offers-btn {
+    display: block;
+    width: 30%;
+    margin: 3px auto;
+    position: relative;
+    font-size: 13px;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: #fabb48;
+  }
+}
+/* mobile */
+@media screen and (max-width: 767px) {
+  .offers-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 2rem;
+    /* margin-top: -20px; */
+  }
+
+  .basic {
+    width: 95%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .standard {
+    width: 95%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .premium {
+    width: 98%;
+    border: 1px solid rgb(190, 188, 188);
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    transition: 0.5s;
+    padding: 10px 0px;
+  }
+
+  .offers-btn {
+    display: block;
+    width: 40%;
+    margin: 3px auto;
+    position: relative;
+    font-size: 13px;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: #fabb48;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  li {
+    color: rgb(206, 185, 185);
+    font-weight: 500;
+    padding-left: -20px;
+    padding: 0.2rem;
+    font-size: 14px;
+    margin-left: -36px;
+  }
+  .offers-btn {
+    display: block;
+    width: 50%;
+    margin: 3px auto;
+    position: relative;
+    font-size: 13px;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: #fabb48;
+  }
+}

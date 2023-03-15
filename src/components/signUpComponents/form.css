@@ -1,0 +1,78 @@
+.login-container {
+  background: #1b1828;
+  padding: 90px 0px;
+}
+
+.login-container form {
+  background: #1b1828;
+  display: block;
+  align-items: center;
+  margin: auto;
+  height: 400px;
+  width: 350px;
+  padding: 20px 20px;
+  border-radius: 30px;
+  box-shadow: 2px 2px 3px #1b1828, inset -1px -1px 2px #fabb48;
+}
+
+.login-page h4 {
+  color: rgb(206, 185, 185);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-content h2 {
+  font-weight: 500;
+  color: #fabb48;
+  margin: 10px;
+}
+
+.form-content p {
+  margin-top: 20px;
+}
+.form-content a {
+  color: #fabb48;
+}
+.form-content button {
+  width: 120px;
+}
+
+.form-group {
+  margin-left: 8px;
+  width: 300px;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: rgb(206, 185, 185);
+  font-family: "Poppins";
+}
+
+.form-group input {
+  height: 30px;
+  border-radius: 5px;
+}
+
+/* des */
+@media screen and (min-width: 1024px) {
+}
+/* tab */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+}
+/* mobile */
+@media screen and (max-width: 767px) {
+  .login-container form {
+    background: #1b1828;
+    display: block;
+    align-items: center;
+    margin: auto;
+    height: 400px;
+    width: 300px;
+    padding: 20px 20px;
+    border-radius: 20px;
+  }
+  .form-group {
+    margin-left: 8px;
+    width: 250px;
+  }
+}

@@ -1,0 +1,149 @@
+﻿window.RecommendedJobsObj = window.RecommendedJobsObj || {};
+window.globalCompVars = window.globalCompVars || {};
+
+/************************ START: Helper methods ************************/
+
+function callAjax(url, method, async, withCredentials, callback, resolve, data) {
+    var xmlhttp;
+    // compatible with IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if (callback)
+                if (resolve) {
+                    callback(xmlhttp.responseText, resolve);
+                } else {
+                    callback(xmlhttp.responseText);
+                }
+        }
+    };
+    xmlhttp.open(method, url, async);
+    if (withCredentials) xmlhttp.withCredentials = true;
+
+    if (data) {
+        xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xmlhttp.send(data);
+    } else {
+        xmlhttp.send();
+    }
+}
+
+RecommendedJobsObj.getRCPath = function () {
+    var rcPath = window.location.href;
+
+    if (rcPath.indexOf("local") > -1) {
+        rcPath = window.location.origin + '/';
+    }
+    else {
+        rcPath = window.location.origin + "/resumecheck/";
+    }
+    return rcPath;
+}
+
+RecommendedJobsObj.loadScript = function (url) {
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement("script");
+        script.onload = resolve;
+        script.onerror = reject;
+        script.src = url;
+        document.getElementsByTagName("head")[0].appendChild(script);
+    });
+}
+
+RecommendedJobsObj.addLinkTag = function (rel, path) {
+    var _linkTag = document.createElement('link');
+    _linkTag.rel = rel;
+    _linkTag.href = path
+    if (!document.head) {
+        document.getElementsByTagName('head')[0].appendChild(_linkTag);
+    }
+    else {
+        document.head.appendChild(_linkTag);
+    }
+    return true;
+};
+
+RecommendedJobsObj.getLocalization = function (url) {
+    return new Promise(function (resolve, reject) {
+        callAjax(
+            url,
+            "GET",
+            true,
+            false,
+            RecommendedJobsObj.handleLocalizationConfig,
+            resolve
+        );
+    })
+}
+
+RecommendedJobsObj.handleLocalizationConfig = function (result) {
+    var data = JSON.parse(result);
+    RecommendedJobsObj.Localization = RecommendedJobsObj.Localization ? (Object.assign({}, RecommendedJobsObj.Localization, data)) : data;
+    RecommendedJobsObj.LocalizationLoaded = true;
+}
+
+/************************ END: Helper methods ************************/
+
+
+/************************ START: Add fonts ************************/
+RecommendedJobsObj.addLinkTag("stylesheet", '//fonts.googleapis.com/css?family=Roboto+Slab:300,400,500&display=swap');
+RecommendedJobsObj.addLinkTag("stylesheet", '//fonts.googleapis.com/css?family=Roboto:300,400,500');
+/************************ END: Add fonts ************************/
+
+function renderRecommendedJobsWidget(config) {
+    if (RecommendedJobsObj && RecommendedJobsObj.isTestBed == "True") {
+        config = {
+            selector: 'RecommendedJobsWidget',
+            portalCD: RecommendedJobsObj.portalCD ? RecommendedJobsObj.portalCD.toLowerCase() : '',
+            domainURL: RecommendedJobsObj.domainURL,
+            props: {
+                radius: document.getElementById('radius').value,
+                jobCount: document.getElementById('jobcount').value,
+                jobTitle: document.getElementById('jobtitle').value,
+                jobLocation: document.getElementById('joblocation').value,
+            }
+        }
+    }
+    var resourceURL = RecommendedJobsObj && RecommendedJobsObj.isTestBed == "True" ? RecommendedJobsObj.getRCPath() : config.domainURL + 'resumecheck/';
+    if (!RecommendedJobsObj.cssLoaded) {
+        config.portalCD = config.portalCD ? config.portalCD : 'lca';
+        var isStyleAdded = RecommendedJobsObj.addLinkTag("stylesheet", resourceURL + 'scripts/componentwidget/recommended-jobs-widget/' + config.portalCD + '/style.css');
+        if (isStyleAdded) {
+            RecommendedJobsObj.cssLoaded = true;
+        }
+    }
+    if (config && config.props) {
+        var blobContentURL = RecommendedJobsObj && RecommendedJobsObj.isTestBed == "True" ? RecommendedJobsObj.contentURL : config.domainURL + "blobcontent/";
+        var localizationURL = blobContentURL + 'rchk/widgets/recommended-jobs/' + config.portalCD + '/localization.json';
+        config.props.localization = RecommendedJobsObj && RecommendedJobsObj.Localization ? RecommendedJobsObj.Localization : {};
+        config.props.jobSearchAPIUrl = config.props.jobSearchAPIUrl ? config.props.jobSearchAPIUrl : config.domainURL + 'jsg/';
+        var ebAPI = config.domainURL + 'eb/api/';
+        window.globalCompVars.BaseApiUrl = ebAPI + 'v1/';
+        window.globalCompVars.BaseApiUrl2 = ebAPI + 'v2/';
+        window.globalCompVars.BaseApiUrlV5 = ebAPI + 'v5/';
+
+    }
+
+    if (RecommendedJobsObj.Loaded && RecommendedJobsObj.LocalizationLoaded) {
+        var recommendedJobsWidget = WidgetLib.default.obj.new(config);
+        recommendedJobsWidget.render();
+    }
+    else {
+        if (!RecommendedJobsObj.Loaded) {
+            RecommendedJobsObj.loadScript(resourceURL + 'scripts/componentwidget/recommended-jobs-widget/recommendedjobswidget-bundle.js');
+        }
+        if (!RecommendedJobsObj.LocalizationLoaded) {
+            RecommendedJobsObj.getLocalization(localizationURL);
+        }
+        var intervalId = setInterval(function () {
+            if (RecommendedJobsObj.LocalizationLoaded && RecommendedJobsObj.Loaded) {
+                clearInterval(intervalId);
+                if (config && config.props) {
+                    config.props.localization = RecommendedJobsObj && RecommendedJobsObj.Localization ? RecommendedJobsObj.Localization : {};
+                }
+                var recommendedJobsWidget = WidgetLib.default.obj.new(config);
+                recommendedJobsWidget.render();
+            }
+        }, 200)
+    }
+}

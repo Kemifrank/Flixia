@@ -1,0 +1,88 @@
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* margin-top: 88px; */
+  align-items: center;
+  text-align: center;
+  padding: 270px 0px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../assets/moviePoster.jpg") no-repeat center center/cover;
+}
+
+.hero-content {
+  margin: auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+.hero-content h4 {
+  margin-top: 1.5rem;
+}
+
+form {
+  display: flex;
+  margin-top: 0.5rem;
+  width: 40%;
+  height: 60px;
+  overflow-y: hidden;
+}
+input {
+  height: 60px;
+  width: 100%;
+  border-radius: 2px;
+  outline: none;
+}
+.form-btn {
+  height: 60px;
+  width: 25%;
+  padding: 1rem;
+  background: #fabb48;
+  color: #fff;
+  border-radius: 2px;
+  margin-top: 0;
+  margin-left: -5px;
+  /* border-radius: 2px; */
+  overflow-y: hidden;
+}
+.form-btn:hover {
+  background: rgb(206, 185, 185);
+  border: 0;
+}
+
+/* des */
+@media screen and (min-width: 1024px) {
+}
+/* tab */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+}
+/* mobile */
+@media screen and (max-width: 767px) {
+  form {
+    display: flex;
+    margin-top: 0.5rem;
+    width: 90%;
+    height: 60px;
+    overflow-y: hidden;
+  }
+
+  .form-btn {
+    height: 60px;
+    width: 40%;
+    padding: 1rem;
+    background: #fabb48;
+    color: #fff;
+    border-radius: 2px;
+    margin-top: 0;
+    font-size: 12px;
+    /* border-radius: 2px; */
+    overflow-y: hidden;
+  }
+  .hero-content {
+    margin: auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .hero-content h4 {
+    margin-top: 1.5rem;
+  }
+}

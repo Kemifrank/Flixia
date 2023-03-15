@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital@1&display=swap");
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  transition: o.3s;
+}
+
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 600;
+  color: rgb(206, 185, 185);
+  font-family: "Poppins";
+  /* border: 1px solid red; */
+  font-size: 45px;
+}
+h4 {
+  font-weight: 400;
+  color: rgb(206, 185, 185);
+  font-family: "Poppins";
+}
+
+p {
+  color: #fff;
+  font-weight: 500;
+  font-family: "Poppins";
+}
+
+button {
+  background: #fabb48;
+  color: #fff;
+  border-radius: 15px;
+  transition: 0.5s;
+  padding: 10px;
+  margin: 10px;
+}
+
+button:hover {
+  background: #13203c;
+  color: #fff;
+  /* border: 1px solid #0089a4; */
+}
